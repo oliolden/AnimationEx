@@ -1,0 +1,28 @@
+body {
+    display: grid;
+    place-content: center;
+    height: 100vh;
+    background-image: radial-gradient(circle at center, #444 20%, #111);
+}
+
+.icon {
+    width: 20vh;
+    height: 20vh;
+    animation: spin 3s ease-in-out infinite;
+    transition: scale 300ms ease;
+    stroke: lime;
+    stroke-width: 2;
+}
+
+.icon:hover {
+    scale: 1.2;
+}
+
+@keyframes spin {
+    from {
+        transform: rotateX(-15deg) rotateY(0deg);
+    }
+    to {
+        transform: rotateX(-15deg) rotateY(360deg);
+    }
+}
