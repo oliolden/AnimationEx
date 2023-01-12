@@ -6,8 +6,8 @@ body {
 }
 
 .icon {
-    width: 20vh;
-    height: 20vh;
+    width: 30vh;
+    height: 30vh;
     animation: spin 3s ease-in-out infinite;
     transition: scale 300ms ease;
     stroke: lime;
