@@ -1,28 +1,107 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
     display: grid;
     place-content: center;
     height: 100vh;
-    background-image: radial-gradient(circle at center, #444 20%, #111);
+    overflow: hidden;
+    background-color: black;
 }
 
-.icon {
-    width: 30vh;
-    height: 30vh;
-    animation: spin 3s ease-in-out infinite;
-    transition: scale 300ms ease;
-    stroke: lime;
-    stroke-width: 2;
+.background{
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    object-position: center;
+    filter: blur(5px);
 }
 
-.icon:hover {
-    scale: 1.2;
+.bubbles-container {
+    position: absolute;
+    display: grid;
+    width: 100vw;
+    top: 0;
 }
 
-@keyframes spin {
+.back-bubbles-container {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    filter: blur(10px);
+    animation: back-bubbles 20s linear infinite;
+}
+
+.front-bubbles-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    filter: blur(8px);
+    animation: front-bubbles 15s linear infinite;
+}
+
+.bone {
+    height: 80vh;
+    position: absolute;
+    filter: blur(4px) brightness(.6) saturate(.6) hue-rotate(20deg);
+    left: 50%;
+    top: 50%;
+    translate: -50% -50%;
+    transform-origin: center;
+}
+
+.bone1 {
+    rotate: -15deg;
+    animation: floating 15s ease-in-out infinite;
+}
+
+.bone2 {
+    rotate: 15deg;
+    animation: floating 10s ease-in-out -6s infinite;
+}
+
+.bubbles {
+    width: 100%;
+    filter: saturate(.5);
+}
+
+.overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(to bottom, #213a3422, #16271faa);
+}
+
+@keyframes back-bubbles {
     from {
-        transform: rotateX(-15deg) rotateY(0deg);
+        transform: translateY(0);
     }
     to {
-        transform: rotateX(-15deg) rotateY(360deg);
+        transform: translateY(-66%);
+    }
+}
+
+@keyframes front-bubbles {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-50%);
+    }
+}
+
+@keyframes floating {
+    0% {
+        transform: rotate(0) translate(0, 0);
+    }
+    33% {
+        transform: rotate(-5deg) translate(-5px, -20px);
+    }
+    66% {
+        transform: rotate(-8deg) translate(5px, 15px);
+    }
+    100% {
+        transform: rotate(0) translate(0, 0);
     }
 }
